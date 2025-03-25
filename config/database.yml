@@ -16,6 +16,5 @@ test:
 production:
   <<: *default
   database: hackaton_api_production
-  username: myapp_user
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
+  username: hackaton
+  password: HackatonRailsApiV1
