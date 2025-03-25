@@ -56,3 +56,4 @@
 puma.log
 ssl/
 .gitconfig
+.lesshst
