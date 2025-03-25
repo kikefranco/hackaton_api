@@ -3,9 +3,15 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = if params[:name].present?
+               user = User.find_by(name: params[:name].strip)
+               return render json: {}, status: :not_found if user.nil?
+               user
+             else
+               User.all
+             end
 
-    render json: @users
+    render json: @users, status: :ok
   end
 
   # GET /users/1
@@ -16,7 +22,7 @@ class UsersController < ApplicationController
   def show_by_name
     @user = User.where(name: params[:name])
 
-    renser json: @user.last, status: :ok
+    render json: @user.last, status: :ok
   end
 
   # POST /users
